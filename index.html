@@ -1,13 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <style>
+    /* Stil örnekleri */
+    .sayfa {
+      display: none;
+      width: 400px;
+      height: 400px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+    }
+
+
+
+
+    #back {
+
+      position: absolute;
+      background-color: red;
+      width: 720px;
+      height: 480px;
+      left: 000px;
+      top: 000px;
+
+
+    }
+
+    #buttons {
+      position: absolute;
+      background-color: rgb(0, 255, 115);
+      width: 20%;
+      height: 100%;
+    }
+
+    #main-area {
+      position: absolute;
+      background-color: rgb(0, 247, 255);
+      width: 80%;
+      height: 100%;
+      right: 0px;
+
+
+
+    }
+
+    #page0 {
+
+      width: 100%;
+      height: 100%;
+
+
+    }
+
+    #page1 {
+
+      width: 100%;
+      height: 100%;
+
+
+    }
+
+    #page2 {
+
+      width: 100%;
+      height: 100%;
+
+
+    }
+
+    #page3 {
+
+      width: 100%;
+      height: 100%;
+
+
+    }
+
+    #lspd-logo {
+      scale: 50%;
+
+      position: absolute;
+      left: -100px;
+      top: -100px;
+
+      pointer-events: none;
+    }
+
+    #inp1 {
+      box-shadow: inset 0 0 10px rgb(4, 0, 255), inset 0 0 20px rgb(4, 0, 255);
+
+      left: 50%;
+      position: absolute;
+      top: 40%;
+      scale: 150%;
+      border: none;
+    }
+
+    #inp2 {
+      box-shadow: inset 0 0 10px rgb(4, 0, 255), inset 0 0 20px rgb(4, 0, 255);
+
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      scale: 150%;
+      border: none;
+    }
+
+    #inp1:focus {
+
+      outline: none;
+
+    }
+
+    #girisbutton {
+
+
+      box-shadow: inset 0 0 10px rgb(4, 0, 255), inset 0 0 20px rgb(4, 0, 255);
+
+      left: 50%;
+      position: absolute;
+      top: 60%;
+      scale: 150%;
+
+
+    }
+
+
+    #checkbox1 {
+
+
+      right: 90px;
+      position: absolute;
+      top: 50%;
+      scale: 150%;
+      border: none;
+
+
+
+    }
+
+    .pagebutton {
+
+      left: 0px;
+      width: 100%;
+
+      border: none;
+      margin-bottom: 10px;
+
+    }
+  </style>
+  <script>
+
+
+    var login = false;
+
+
+    function start() {
+
+      var page0color = "rgb(0, 0, 255)";
+      var page1color = "rgb(0, 195, 255)";
+      var page2color = "rgb(0, 255, 13)";
+      var page3color = "rgb(255, 128, 0)";
+
+      document.getElementById("page0").style.backgroundColor = page0color;
+      document.getElementById("page1").style.backgroundColor = page1color;
+      document.getElementById("page2").style.backgroundColor = page2color;
+      document.getElementById("page3").style.backgroundColor = page3color;
+
+
+    }
+
+
+
+
+
+    function showpage(pagename) {
+      var pages = document.getElementsByClassName("page")
+
+
+
+
+
+      if (pagename == "page3" || pagename == "page0") {
+
+
+        for (var i = 0; i < pages.length; i++) {
+
+          pages[i].style.display = "none";
+
+
+
+
+
+        }
+        document.getElementById(pagename).style.display = "block";
+      }
+      else if (login == true) {
+
+
+        for (var i = 0; i < pages.length; i++) {
+
+          pages[i].style.display = "none";
+
+        }
+        document.getElementById(pagename).style.display = "block";
+
+      }
+      else {
+
+        alert("önce giriş yapmalısın!")
+
+      }
+
+    }
+
+
+
+
+
+
+
+
+    var isimler = ["mahmut", "aslı", "ekrem", "ahmet"];
+    var soyisimler = ["madak", "adak", "edek", "ahdak"];
+
+
+
+    function giris() {
+
+
+
+
+      var inputGirdi1 = document.getElementById("inp1").value;
+      var sira = isimler.indexOf(inputGirdi1);
+
+
+      var inputGirdi2 = document.getElementById("inp2").value;
+      var sira2 = soyisimler.indexOf(inputGirdi2);
+
+
+
+      if (sira == sira2 && sira != -1 && sira2 != -1) {
+        alert("Giriş yaptın!")
+        login = true;
+
+        document.getElementById("exit").style.display = "block";
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("page0").style.display = "none";
+        document.getElementById("page1").style.display = "block";
+
+
+      }
+
+
+
+
+
+    }
+
+
+
+    function kümefonks() {
+
+      var inputGirdi = document.getElementById("kumegir").value;
+      var inputGirdi2 = document.getElementById("kumegir2").value;
+
+
+      if (inputGirdi == "") {
+
+        alert("isim boş bırakılamaz!");
+
+      }
+      else {
+
+        if (inputGirdi2 == "") {
+
+          alert("soy isim boş bırakılamaz!");
+
+        }
+        else {
+
+          isimler.push(inputGirdi);
+          soyisimler.push(inputGirdi2);
+
+
+        }
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    function exitfonks() {
+
+
+      login = false;
+
+      document.getElementById("exit").style.display = "none";
+      document.getElementById("login").style.display = "block";
+      alert("başarıyla çıkış yapıldı!")
+    }
+
+
+
+    function check() {
+      var check1 = document.getElementById("checkbox1").checked;
+
+      if (check1 == true) {
+
+
+        document.getElementById("inp2").type = "text";
+
+      }
+      else {
+        document.getElementById("inp2").type = "password";
+
+      }
+
+
+
+    }
+
+
+  </script>
 </head>
-<body>
-    
-    <div>asdasd</div>>
+
+<body onload="start()">
+
+
+
+  <div id="back">
+    <div id="buttons">
+      <button class="pagebutton" class="kilit" onclick="showpage('page1')">Page 1</button>
+      <button class="pagebutton" class="kilit" onclick="showpage('page2')">Page 2</button>
+      <button class="pagebutton" id="login" onclick="showpage('page0')">Giriş yap</button>
+
+      <button  class="pagebutton" id="exit" style="display: none;" onclick="exitfonks()">çıkış yap</button>
+
+      <button class="pagebutton" id="acc" onclick="showpage('page3')">Hesap oluşturur</button>
+    </div>
+    <div id="main-area">
+
+      <div style="display: none;" id="page1" class="page">
+        asdasda
+
+      </div>
+      <div style="display: none;" id="page2" class="page">
+        patetwes
+
+      </div>
+      <div id="page0" class="page" style="display: block;">
+        <img id="lspd-logo" src="lspd.webp">
+        <input id="inp1">
+        <input id="inp2" type="password">
+
+        <input onclick="check()" id="checkbox1" type="checkbox">
+
+        <!-- BURASI -->
+
+
+
+        <button id="girisbutton" onclick="giris()">Giriş yap</button>
+      </div>
+
+      <div style="display: none;" id="page3" class="page">
+
+        <button onclick="kümefonks()">küme</button>
+        <input id="kumegir">
+        <input id="kumegir2" type="password">
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
 </body>
+
 </html>
